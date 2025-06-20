@@ -1,22 +1,19 @@
-/* Importação de fontes fofas do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;700&display=swap');
 
-/* Variáveis de Cores (Roxas e Estrelas) */
 :root {
-    --purple-dark: #4A005B; /* Roxo escuro */
-    --purple-medium: #7B0099; /* Roxo médio */
-    --purple-light: #B266D6; /* Roxo claro / Lilás */
-    --purple-very-light: #E0BBE4; /* Roxo muito claro / Lavanda */
-    --star-color: #FFD700; /* Dourado para estrelas */
+    --purple-dark: #4A005B;
+    --purple-medium: #7B0099;
+    --purple-light: #B266D6;
+    --purple-very-light: #E0BBE4;
+    --star-color: #FFD700;
     --text-color-dark: #333;
     --text-color-light: #f4f4f4;
-    --bg-gradient-start: #1a0028; /* Início do gradiente para o fundo */
-    --bg-gradient-end: #3b0051; /* Fim do gradiente para o fundo */
-    --gold-glow: #FFEB3B; /* Um dourado para brilhos intensos */
-    --purple-glow: #DAA5FF; /* Um roxo para brilhos adicionais */
+    --bg-gradient-start: #1a0028;
+    --bg-gradient-end: #3b0051;
+    --gold-glow: #FFEB3B;
+    --purple-glow: #DAA5FF;
 }
 
-/* Reset básico para todos os elementos */
 * {
     margin: 0;
     padding: 0;
@@ -27,13 +24,12 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-color-light);
-    background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end)); /* Fundo gradiente roxo */
+    background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
     min-height: 100vh;
-    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
-    position: relative; /* Para posicionar as estrelas */
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* Animação de fundo sutil - adicione um toque de movimento */
 @keyframes background-pan {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -51,11 +47,9 @@ body::before {
                 radial-gradient(circle at bottom right, rgba(178,102,214,0.05) 0%, transparent 40%);
     background-size: 200% 200%;
     animation: background-pan 60s linear infinite alternate;
-    z-index: -2; /* Fica atrás do gradiente principal */
+    z-index: -2;
 }
 
-
-/* --- Tela Splash --- */
 .splash-screen {
     position: fixed;
     top: 0;
@@ -67,33 +61,32 @@ body::before {
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 9999; /* Garante que fique acima de tudo */
+    z-index: 9999;
     opacity: 1;
     visibility: visible;
-    transition: opacity 1s ease-out, visibility 1s ease-out; /* Transição suave */
-    flex-direction: column; /* Para alinhar o conteúdo verticalmente */
-    padding: 20px; /* Espaçamento interno */
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+    flex-direction: column;
+    padding: 20px;
 }
 
 .splash-screen.hidden {
     opacity: 0;
     visibility: hidden;
-    pointer-events: none; /* Desabilita interações após esconder */
+    pointer-events: none;
 }
 
 .splash-content {
-    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente mais escuro para o conteúdo */
+    background: rgba(0, 0, 0, 0.7);
     padding: 40px 30px;
     border-radius: 20px;
-    box-shadow: 0 0 40px rgba(178, 102, 214, 0.9), 0 0 20px rgba(255, 215, 0, 0.5); /* Sombra roxa forte e um brilho dourado */
+    box-shadow: 0 0 40px rgba(178, 102, 214, 0.9), 0 0 20px rgba(255, 215, 0, 0.5);
     max-width: 600px;
-    width: 90%; /* Responsividade */
+    width: 90%;
     border: 3px solid var(--purple-light);
-    position: relative; /* Para o brilho interno */
-    overflow: hidden; /* Esconde brilho extra fora da caixa */
+    position: relative;
+    overflow: hidden;
 }
 
-/* Animação de brilho interno para o conteúdo splash */
 .splash-content::before {
     content: '';
     position: absolute;
@@ -112,23 +105,21 @@ body::before {
     to { transform: rotate(360deg); }
 }
 
-
 .splash-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 3.5em; /* Ligeiramente maior */
+    font-size: 3.5em;
     color: var(--star-color);
     margin-bottom: 20px;
-    text-shadow: 0 0 10px var(--gold-glow), 0 0 20px rgba(0,0,0,0.8); /* Brilho dourado mais intenso */
+    text-shadow: 0 0 10px var(--gold-glow), 0 0 20px rgba(0,0,0,0.8);
 }
 
 .splash-text {
-    font-size: 1.3em; /* Ligeiramente maior */
+    font-size: 1.3em;
     color: var(--text-color-light);
     margin-bottom: 30px;
     line-height: 1.8;
 }
 
-/* Estilos para o campo de senha */
 .password-input-container {
     margin-bottom: 25px;
     display: flex;
@@ -159,10 +150,10 @@ body::before {
 }
 
 .error-message {
-    color: #ff6b6b; /* Vermelho para erro */
+    color: #ff6b6b;
     font-size: 1em;
     margin-top: 10px;
-    height: 1.2em; /* Para manter o espaço e evitar quebra de layout */
+    height: 1.2em;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -171,50 +162,47 @@ body::before {
     opacity: 1;
 }
 
-
 .splash-button {
     background-color: var(--purple-medium);
     color: var(--text-color-light);
-    border: 3px solid var(--star-color); /* Borda dourada */
-    padding: 15px 35px; /* Mais preenchimento */
-    border-radius: 50px; /* Botão em formato de pílula */
-    font-size: 1.6em; /* Um pouco maior */
+    border: 3px solid var(--star-color);
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.6em;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px; /* Mais espaço entre ícone e texto */
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Sombra suave inicial */
+    gap: 15px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 .splash-button:hover {
     background-color: var(--purple-dark);
-    transform: translateY(-5px) scale(1.03); /* Levemente maior e mais levantado */
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6), 0 0 30px var(--purple-light); /* Sombra dourada e roxa no hover */
-    filter: brightness(1.2); /* Mais brilho no hover */
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6), 0 0 30px var(--purple-light);
+    filter: brightness(1.2);
 }
 
-/* Ícones Font Awesome para um toque de "glamour" */
 .splash-button .fas,
-.section-container h2 .fas { /* Aplica a cor e brilho aos ícones do botão e títulos */
-    color: var(--star-color); /* Dourado para os ícones */
-    text-shadow: 0 0 8px var(--gold-glow); /* Brilho nos ícones */
-    font-size: 1.2em; /* Tamanho ajustado para os ícones */
-    animation: pulse 2s infinite ease-in-out; /* Animação sutil de pulso */
+.section-container h2 .fas {
+    color: var(--star-color);
+    text-shadow: 0 0 8px var(--gold-glow);
+    font-size: 1.2em;
+    animation: pulse 2s infinite ease-in-out;
 }
 
-/* Ajuste específico para os ícones de lista (agora estrelas) */
 .section-container ul li::before {
-    font-family: 'Font Awesome 6 Free'; /* Usando Font Awesome 6 */
-    font-weight: 900; /* Para ícones sólidos */
-    content: '\f005'; /* Ícone de estrela sólida (fa-star) */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: '\f005';
     position: absolute;
     left: 0;
     color: var(--star-color);
-    text-shadow: 0 0 5px var(--gold-glow); /* Brilho na estrela */
-    animation: pop-in 0.5s ease-out forwards; /* Animação de entrada */
+    text-shadow: 0 0 5px var(--gold-glow);
+    animation: pop-in 0.5s ease-out forwards;
 }
 
 @keyframes pulse {
@@ -222,24 +210,23 @@ body::before {
     50% { transform: scale(1.1); opacity: 0.9; }
 }
 
-/* Fundo de estrelas - gerado pelo JS */
 .stars-background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Esconde estrelas fora da área */
-    z-index: -1; /* Fica atrás do conteúdo */
+    overflow: hidden;
+    z-index: -1;
 }
 
 .star {
     position: absolute;
     background-color: var(--star-color);
     border-radius: 50%;
-    opacity: 0; /* Começam invisíveis */
-    animation: twinkle 4s infinite ease-in-out; /* Animação de cintilar */
-    box-shadow: 0 0 8px var(--gold-glow); /* Brilho em cada estrela */
+    opacity: 0;
+    animation: twinkle 4s infinite ease-in-out;
+    box-shadow: 0 0 8px var(--gold-glow);
 }
 
 @keyframes twinkle {
@@ -247,13 +234,12 @@ body::before {
     50% { opacity: 1; transform: scale(1); }
 }
 
-/* Conteúdo principal - começa escondido */
 #mainContent {
     opacity: 0;
     visibility: hidden;
     transition: opacity 1s ease-in, visibility 1s ease-in;
-    padding-left: 140px; /* Espaço para a galeria da esquerda */
-    padding-right: 140px; /* Espaço para a galeria da direita */
+    padding-left: 140px;
+    padding-right: 140px;
 }
 
 #mainContent.visible {
@@ -261,42 +247,41 @@ body::before {
     visibility: visible;
 }
 
-/* --- Fotos Fixas nas Laterais --- */
 .fixed-photo-gallery {
     position: fixed;
-    top: 50%; /* Começa no meio da tela */
-    transform: translateY(-50%); /* Ajusta para centralizar verticalmente */
-    width: 120px; /* Largura das galerias laterais */
-    height: auto; /* Altura automática */
-    z-index: 100; /* Garante que fiquem acima do conteúdo principal */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: auto;
+    z-index: 100;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaço entre as fotos */
-    pointer-events: none; /* Permite clicar no conteúdo por trás */
-    opacity: 0; /* Começa invisível */
+    gap: 20px;
+    pointer-events: none;
+    opacity: 0;
     transition: opacity 1s ease-in;
 }
 
 #mainContent.visible .fixed-photo-gallery {
-    opacity: 1; /* Torna visível quando o conteúdo principal aparece */
+    opacity: 1;
 }
 
 .fixed-photo-gallery.left {
-    left: 10px; /* Distância da borda esquerda */
+    left: 10px;
 }
 
 .fixed-photo-gallery.right {
-    right: 10px; /* Distância da borda direita */
+    right: 10px;
 }
 
 .fixed-photo-item {
-    background: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 0 15px rgba(178, 102, 214, 0.6), 0 0 8px rgba(255, 215, 0, 0.4);
     border: 2px solid var(--purple-medium);
     text-align: center;
-    pointer-events: auto; /* Permite interações com a foto e legenda */
+    pointer-events: auto;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -307,14 +292,14 @@ body::before {
 
 .fixed-photo-item img {
     width: 100%;
-    height: 160px; /* Altura fixa para as miniaturas */
+    height: 160px;
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid var(--star-color);
 }
 
 .fixed-photo-caption {
-    font-size: 0.85em; /* Tamanho da fonte menor para legendas */
+    font-size: 0.85em;
     color: var(--text-color-light);
     margin-top: 8px;
     line-height: 1.3;
@@ -322,87 +307,83 @@ body::before {
     font-weight: 300;
 }
 
-
-/* Cabeçalho Hero Section */
 .hero {
     text-align: center;
-    padding: 60px 20px; /* Mais preenchimento */
-    background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para o texto, um pouco mais visível */
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.5);
     color: var(--text-color-light);
     border-bottom: 2px solid var(--purple-light);
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Sombra para destacar a seção */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero h1 {
     font-family: 'Dancing Script', cursive;
-    font-size: 4em; /* Ainda maior */
-    color: var(--star-color); /* Título principal dourado */
+    font-size: 4em;
+    color: var(--star-color);
     margin-bottom: 15px;
-    text-shadow: 0 0 15px var(--gold-glow), 0 0 30px rgba(0,0,0,0.7); /* Brilho mais intenso */
+    text-shadow: 0 0 15px var(--gold-glow), 0 0 30px rgba(0,0,0,0.7);
 }
 
 .hero p {
-    font-size: 1.3em; /* Ligeiramente maior */
+    font-size: 1.3em;
     margin-bottom: 25px;
     font-weight: 300;
 }
 
 .hero-image {
     width: 100%;
-    max-width: 400px; /* Limita o tamanho da imagem principal */
+    max-width: 400px;
     height: auto;
-    border-radius: 15px; /* Cantos arredondados */
+    border-radius: 15px;
     border: 5px solid var(--purple-light);
-    box-shadow: 0 0 30px rgba(178, 102, 214, 0.9), 0 0 20px rgba(255, 215, 0, 0.5); /* Sombra roxa brilhante e um toque dourado */
-    object-fit: cover; /* Garante que a imagem preencha o espaço */
-    margin-top: 30px; /* Mais espaço acima */
-    filter: saturate(1.1); /* Cores um pouco mais vivas */
+    box-shadow: 0 0 30px rgba(178, 102, 214, 0.9), 0 0 20px rgba(255, 215, 0, 0.5);
+    object-fit: cover;
+    margin-top: 30px;
+    filter: saturate(1.1);
     transition: transform 0.4s ease-in-out;
 }
 
 .hero-image:hover {
-    transform: scale(1.05) rotate(-2deg); /* Um toque de movimento no hover */
+    transform: scale(1.05) rotate(-2deg);
 }
 
 .hero-message {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.2em; /* Maior */
+    font-size: 2.2em;
     color: var(--purple-very-light);
-    margin-top: 40px; /* Mais espaço */
+    margin-top: 40px;
     padding: 15px 30px;
-    background: rgba(123, 0, 153, 0.7); /* Fundo mais opaco para a mensagem */
+    background: rgba(123, 0, 153, 0.7);
     border-radius: 15px;
-    display: inline-block; /* Ajusta o fundo ao tamanho do texto */
+    display: inline-block;
     box-shadow: 0 0 20px rgba(178, 102, 214, 0.8);
     text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
 }
 
-/* Seções de Conteúdo */
 .section-container {
-    background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente mais escuro */
-    margin: 30px auto; /* Mais margem */
-    padding: 40px; /* Mais preenchimento */
-    border-radius: 20px; /* Bordas mais arredondadas */
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5), 0 0 10px rgba(178, 102, 214, 0.4); /* Sombra mais intensa */
-    max-width: 950px; /* Ligeiramente mais largo */
+    background: rgba(0, 0, 0, 0.6);
+    margin: 30px auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5), 0 0 10px rgba(178, 102, 214, 0.4);
+    max-width: 950px;
     border: 2px solid var(--purple-medium);
 }
 
 .section-container h2 {
     font-family: 'Dancing Script', cursive;
-    font-size: 3em; /* Maior */
+    font-size: 3em;
     color: var(--purple-light);
     text-align: center;
     margin-bottom: 30px;
-    text-shadow: 0 0 10px var(--purple-glow), 1px 1px 5px rgba(0,0,0,0.6); /* Brilho roxo */
+    text-shadow: 0 0 10px var(--purple-glow), 1px 1px 5px rgba(0,0,0,0.6);
     position: relative;
-    padding-bottom: 10px; /* Espaço para o underline animado */
+    padding-bottom: 10px;
 }
 
-/* Underline animado para títulos de seção */
 .section-container h2::after {
     content: '';
     display: block;
@@ -421,59 +402,55 @@ body::before {
 
 .section-container p,
 .section-container li {
-    font-size: 1.15em; /* Ligeiramente maior */
+    font-size: 1.15em;
     margin-bottom: 18px;
     color: var(--text-color-light);
     text-align: justify;
 }
 
 .section-container ul {
-    list-style: none; /* Remove bolinhas da lista */
+    list-style: none;
     padding-left: 0;
 }
 
 .section-container ul li {
     position: relative;
-    padding-left: 30px; /* Mais espaço para o ícone */
+    padding-left: 30px;
     margin-bottom: 12px;
 }
-
-/* Estilo para ícones dos títulos (já configurado em .splash-button .fas) */
-
 
 @keyframes pop-in {
     from { transform: scale(0); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 
-/* Estilos para as seções com imagem ao lado do texto */
 .content-with-image {
     display: flex;
-    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
-    align-items: center; /* Alinha verticalmente */
-    gap: 30px; /* Espaçamento entre os elementos */
-    margin-bottom: 30px; /* Espaço após a seção */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
 }
 
 .content-with-image.reverse {
-    flex-direction: row-reverse; /* Inverte a ordem em telas maiores */
+    flex-direction: row-reverse;
 }
 
 .content-with-image .text-content {
-    flex: 1; /* Ocupa o espaço restante */
-    min-width: 300px; /* Largura mínima para o texto antes de quebrar */
+    flex: 1;
+    min-width: 300px;
 }
 
 .content-with-image .image-wrapper {
-    flex-shrink: 0; /* Impede que a imagem encolha */
+    flex-shrink: 0;
     width: 100%;
-    max-width: 350px; /* Largura máxima da imagem */
+    max-width: 350px;
     text-align: center;
 }
 
 .content-with-image .image-wrapper img {
     width: 100%;
-    height: 680px; /* Altura fixa para as imagens */
+    height: 680px;
     object-fit: cover;
     border-radius: 15px;
     border: 4px solid var(--purple-light);
@@ -494,49 +471,45 @@ body::before {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-/* Spotify Embed */
 .spotify-embed {
     width: 100%;
-    max-width: 650px; /* Ligeiramente maior */
+    max-width: 650px;
     margin: 30px auto;
-    border-radius: 15px; /* Bordas mais arredondadas */
-    overflow: hidden; /* Garante que o iframe fique dentro da borda */
-    box-shadow: 0 0 30px rgba(178, 102, 214, 0.8), 0 0 15px rgba(255, 215, 0, 0.4); /* Sombra mais forte */
-    border: 4px solid var(--purple-light); /* Borda mais espessa */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(178, 102, 214, 0.8), 0 0 15px rgba(255, 215, 0, 0.4);
+    border: 4px solid var(--purple-light);
 }
 
 .spotify-embed iframe {
     width: 100%;
-    height: 352px; /* Altura padrão para playlists */
+    height: 352px;
     border: none;
 }
 
-
-/* Galeria de Fotos */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Colunas adaptáveis, um pouco maiores */
-    gap: 25px; /* Mais espaço entre as fotos */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
     padding: 15px;
 }
 
 .gallery-item {
-    background-color: rgba(123, 0, 153, 0.7); /* Fundo roxo para cada item da galeria, mais opaco */
-    border-radius: 15px; /* Mais arredondado */
-    padding: 20px; /* Mais preenchimento */
+    background-color: rgba(123, 0, 153, 0.7);
+    border-radius: 15px;
+    padding: 20px;
     text-align: center;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Efeito ao passar o mouse mais suave */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     border: 2px solid var(--purple-medium);
-    position: relative; /* Para o brilho hover */
+    position: relative;
 }
 
 .gallery-item:hover {
-    transform: translateY(-8px) scale(1.03) rotate(1deg); /* Efeito mais dinâmico */
-    box-shadow: 0 8px 25px rgba(178, 102, 214, 0.8), 0 0 15px var(--gold-glow); /* Sombra roxa forte e brilho dourado */
+    transform: translateY(-8px) scale(1.03) rotate(1deg);
+    box-shadow: 0 8px 25px rgba(178, 102, 214, 0.8), 0 0 15px var(--gold-glow);
 }
 
-/* Brilho ao redor da imagem na galeria */
 .gallery-item::before {
     content: '';
     position: absolute;
@@ -544,7 +517,7 @@ body::before {
     left: -5px;
     right: -5px;
     bottom: -5px;
-    border-radius: 18px; /* Correspondendo ao border-radius do item */
+    border-radius: 18px;
     background: linear-gradient(45deg, var(--gold-glow), var(--purple-glow));
     z-index: -1;
     opacity: 0;
@@ -552,31 +525,30 @@ body::before {
 }
 
 .gallery-item:hover::before {
-    opacity: 0.5; /* Aparece um brilho sutil ao redor */
-    filter: blur(10px); /* Suaviza o brilho */
+    opacity: 0.5;
+    filter: blur(10px);
 }
 
 .gallery-item img {
     width: 100%;
-    height: 220px; /* Altura fixa ligeiramente maior para as imagens */
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    height: 220px;
+    object-fit: cover;
     border-radius: 10px;
-    border: 4px solid var(--purple-light); /* Borda mais espessa */
+    border: 4px solid var(--purple-light);
     margin-bottom: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .gallery-item p {
-    font-size: 1em; /* Ligeiramente maior */
+    font-size: 1em;
     color: var(--text-color-light);
     margin-bottom: 0;
     font-weight: 300;
 }
 
-/* Seção de Vídeos */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 colunas, adaptável */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     padding: 20px;
     margin-top: 30px;
@@ -598,9 +570,9 @@ body::before {
 
 .video-item iframe {
     width: 100%;
-    height: 200px; /* Altura padrão para vídeos */
+    height: 200px;
     border: none;
-    display: block; /* Remove espaçamento indesejado */
+    display: block;
 }
 
 .video-item p.video-caption {
@@ -613,29 +585,27 @@ body::before {
     margin: 0;
 }
 
-/* Imagem final */
 .final-image {
     display: block;
     width: 100%;
-    max-width: 450px; /* Ligeiramente maior */
+    max-width: 450px;
     height: auto;
-    border-radius: 20px; /* Mais arredondado */
-    border: 6px solid var(--purple-light); /* Borda mais espessa */
-    box-shadow: 0 0 35px rgba(178, 102, 214, 0.9), 0 0 20px var(--gold-glow); /* Sombra e brilho fortes */
+    border-radius: 20px;
+    border: 6px solid var(--purple-light);
+    box-shadow: 0 0 35px rgba(178, 102, 214, 0.9), 0 0 20px var(--gold-glow);
     margin: 40px auto 0;
     object-fit: cover;
-    filter: saturate(1.2); /* Cores mais vivas */
+    filter: saturate(1.2);
     transition: transform 0.5s ease-in-out;
 }
 
 .final-image:hover {
-    transform: scale(1.08) rotate(3deg); /* Um toque divertido de movimento */
+    transform: scale(1.08) rotate(3deg);
 }
 
-/* Assinatura */
 .signature {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.5em; /* Maior */
+    font-size: 2.5em;
     color: var(--purple-very-light);
     text-align: center;
     margin-top: 50px;
@@ -644,180 +614,24 @@ body::before {
 
 .your-name {
     font-family: 'Dancing Script', cursive;
-    font-size: 3em; /* Bem maior para destaque */
+    font-size: 3em;
     color: var(--star-color);
     text-align: center;
     margin-bottom: 30px;
-    text-shadow: 0 0 15px var(--gold-glow), 0 0 25px rgba(0,0,0,0.8); /* Brilho intenso */
+    text-shadow: 0 0 15px var(--gold-glow), 0 0 25px rgba(0,0,0,0.8);
 }
 
-/* Rodapé */
 footer {
     text-align: center;
     padding: 25px;
-    background: rgba(0, 0, 0, 0.5); /* Fundo mais opaco */
+    background: rgba(0, 0, 0, 0.5);
     color: var(--text-color-light);
     font-size: 1em;
     margin-top: 60px;
-    border-top: 3px solid var(--purple-dark); /* Borda mais espessa */
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Sombra para o rodapé */
+    border-top: 3px solid var(--purple-dark);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Responsividade --- */
-@media (max-width: 1200px) { /* Ajusta o padding do mainContent para telas menores */
-    #mainContent {
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-    .fixed-photo-gallery {
-        width: 90px; /* Diminui a largura das galerias laterais */
-    }
-    .fixed-photo-item img {
-        height: 80px; /* Diminui a altura das miniaturas */
-    }
-}
-
-@media (max-width: 992px) { /* Ajusta ainda mais para tablets */
-    #mainContent {
-        padding-left: 60px;
-        padding-right: 60px;
-    }
-    .fixed-photo-gallery {
-        width: 70px; /* Diminui ainda mais */
-    }
-    .fixed-photo-item img {
-        height: 60px; /* Altura menor */
-    }
-    .fixed-photo-caption {
-        font-size: 0.75em; /* Fonte menor */
-    }
-}
-
-
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 3em; /* Ajusta o tamanho do título principal */
-    }
-
-    .hero p {
-        font-size: 1.1em;
-    }
-
-    .hero-image {
-        max-width: 300px; /* Ajusta a imagem principal */
-    }
-
-    .hero-message {
-        font-size: 1.8em; /* Ajusta a mensagem inicial */
-    }
-
-    .section-container {
-        margin: 20px 15px;
-        padding: 30px;
-    }
-
-    .section-container h2 {
-        font-size: 2.5em; /* Ajusta títulos de seção */
-    }
-
-    .section-container p,
-    .section-container li {
-        font-size: 1.05em; /* Ajusta texto geral */
-    }
-
-    /* Responsividade para as seções com imagem ao lado do texto */
-    .content-with-image {
-        flex-direction: column; /* Em telas menores, os itens ficam um abaixo do outro */
-    }
-
-    .content-with-image.reverse {
-        flex-direction: column; /* Mantém a coluna mesmo se for reverse */
-    }
-
-    .content-with-image .image-wrapper {
-        max-width: 100%; /* Imagem ocupa toda a largura disponível */
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr; /* Uma coluna no celular */
-        gap: 20px;
-    }
-
-    .gallery-item img {
-        height: 280px; /* Mantém uma boa altura para as fotos da galeria no celular */
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr; /* Uma coluna para vídeos no celular */
-        gap: 20px;
-    }
-
-    .video-item iframe {
-        height: 180px; /* Ajusta altura do vídeo para mobile */
-    }
-
-    .signature, .your-name {
-        font-size: 2em; /* Ajusta o tamanho da assinatura */
-    }
-
-    /* Splash Screen para celular */
-    .splash-title {
-        font-size: 2.8em;
-    }
-    .splash-text {
-        font-size: 1.1em;
-    }
-    .splash-button {
-        font-size: 1.4em;
-        padding: 14px 28px;
-    }
-    .splash-button .fas {
-        font-size: 1em;
-    }
-
-    .password-field {
-        width: 85%; /* Ajusta largura do campo de senha para mobile */
-    }
-
-    /* Esconde as fotos laterais em telas pequenas */
-    .fixed-photo-gallery {
-        display: none;
-    }
-    #mainContent {
-        padding-left: 15px; /* Remove o padding extra para telas pequenas */
-        padding-right: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2.5em; /* Título ainda menor em telas muito pequenas */
-    }
-    .hero-message {
-        font-size: 1.5em;
-        padding: 10px 20px;
-    }
-    .section-container h2 {
-        font-size: 2.2em;
-    }
-    .splash-title {
-        font-size: 2.2em;
-    }
-    .splash-text {
-        font-size: 1em;
-    }
-    .splash-button {
-        font-size: 1.2em;
-        padding: 10px 20px;
-    }
-    .gallery-item img {
-        height: 200px; /* Ajusta um pouco mais para telas muito pequenas */
-    }
-    .signature, .your-name {
-        font-size: 1.8em;
-    }
-}
-/* --- Carrossel Estilo Cassete --- */
 .cassette-carousel-container {
     position: relative;
     max-width: 800px;
@@ -881,4 +695,158 @@ footer {
 
 .cassette-nav.next {
     right: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    #mainContent {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .fixed-photo-gallery {
+        width: 90px;
+    }
+    .fixed-photo-item img {
+        height: 80px;
+    }
+}
+
+@media (max-width: 992px) {
+    #mainContent {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+    .fixed-photo-gallery {
+        width: 70px;
+    }
+    .fixed-photo-item img {
+        height: 60px;
+    }
+    .fixed-photo-caption {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .hero-image {
+        max-width: 300px;
+    }
+
+    .hero-message {
+        font-size: 1.8em;
+    }
+
+    .section-container {
+        margin: 20px 15px;
+        padding: 30px;
+    }
+
+    .section-container h2 {
+        font-size: 2.5em;
+    }
+
+    .section-container p,
+    .section-container li {
+        font-size: 1.05em;
+    }
+
+    .content-with-image {
+        flex-direction: column;
+    }
+
+    .content-with-image.reverse {
+        flex-direction: column;
+    }
+
+    .content-with-image .image-wrapper {
+        max-width: 100%;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .gallery-item img {
+        height: 280px;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .video-item iframe {
+        height: 180px;
+    }
+
+    .signature, .your-name {
+        font-size: 2em;
+    }
+
+    .splash-title {
+        font-size: 2.8em;
+    }
+    .splash-text {
+        font-size: 1.1em;
+    }
+    .splash-button {
+        font-size: 1.4em;
+        padding: 14px 28px;
+    }
+    .splash-button .fas {
+        font-size: 1em;
+    }
+
+    .password-field {
+        width: 85%;
+    }
+
+    /* As fotos laterais serão movidas para dentro do #mainContent no HTML
+       e tratadas como uma nova galeria (ou adicionadas a uma existente) */
+    .fixed-photo-gallery {
+        display: none; /* Esconde as galerias fixas em mobile */
+    }
+    
+    #mainContent {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.5em;
+    }
+    .hero-message {
+        font-size: 1.5em;
+        padding: 10px 20px;
+    }
+    .section-container h2 {
+        font-size: 2.2em;
+    }
+    .splash-title {
+        font-size: 2.2em;
+    }
+    .splash-text {
+        font-size: 1em;
+    }
+    .splash-button {
+        font-size: 1.2em;
+        padding: 10px 20px;
+    }
+    .gallery-item img {
+        height: 200px;
+    }
+    .signature, .your-name {
+        font-size: 1.8em;
+    }
 }
