@@ -1,0 +1,884 @@
+/* Importação de fontes fofas do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;700&display=swap');
+
+/* Variáveis de Cores (Roxas e Estrelas) */
+:root {
+    --purple-dark: #4A005B; /* Roxo escuro */
+    --purple-medium: #7B0099; /* Roxo médio */
+    --purple-light: #B266D6; /* Roxo claro / Lilás */
+    --purple-very-light: #E0BBE4; /* Roxo muito claro / Lavanda */
+    --star-color: #FFD700; /* Dourado para estrelas */
+    --text-color-dark: #333;
+    --text-color-light: #f4f4f4;
+    --bg-gradient-start: #1a0028; /* Início do gradiente para o fundo */
+    --bg-gradient-end: #3b0051; /* Fim do gradiente para o fundo */
+    --gold-glow: #FFEB3B; /* Um dourado para brilhos intensos */
+    --purple-glow: #DAA5FF; /* Um roxo para brilhos adicionais */
+}
+
+/* Reset básico para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end)); /* Fundo gradiente roxo */
+    min-height: 100vh;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+    position: relative; /* Para posicionar as estrelas */
+}
+
+/* Animação de fundo sutil - adicione um toque de movimento */
+@keyframes background-pan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(255,215,0,0.05) 0%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(178,102,214,0.05) 0%, transparent 40%);
+    background-size: 200% 200%;
+    animation: background-pan 60s linear infinite alternate;
+    z-index: -2; /* Fica atrás do gradiente principal */
+}
+
+
+/* --- Tela Splash --- */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999; /* Garante que fique acima de tudo */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-out, visibility 1s ease-out; /* Transição suave */
+    flex-direction: column; /* Para alinhar o conteúdo verticalmente */
+    padding: 20px; /* Espaçamento interno */
+}
+
+.splash-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Desabilita interações após esconder */
+}
+
+.splash-content {
+    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente mais escuro para o conteúdo */
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(178, 102, 214, 0.9), 0 0 20px rgba(255, 215, 0, 0.5); /* Sombra roxa forte e um brilho dourado */
+    max-width: 600px;
+    width: 90%; /* Responsividade */
+    border: 3px solid var(--purple-light);
+    position: relative; /* Para o brilho interno */
+    overflow: hidden; /* Esconde brilho extra fora da caixa */
+}
+
+/* Animação de brilho interno para o conteúdo splash */
+.splash-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%);
+    opacity: 0.1;
+    animation: rotate-glow 15s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate-glow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+.splash-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5em; /* Ligeiramente maior */
+    color: var(--star-color);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--gold-glow), 0 0 20px rgba(0,0,0,0.8); /* Brilho dourado mais intenso */
+}
+
+.splash-text {
+    font-size: 1.3em; /* Ligeiramente maior */
+    color: var(--text-color-light);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+/* Estilos para o campo de senha */
+.password-input-container {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.password-field {
+    width: 70%;
+    padding: 12px 18px;
+    border: 2px solid var(--purple-light);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color-light);
+    font-size: 1.2em;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.password-field::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.password-field:focus {
+    border-color: var(--star-color);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.error-message {
+    color: #ff6b6b; /* Vermelho para erro */
+    font-size: 1em;
+    margin-top: 10px;
+    height: 1.2em; /* Para manter o espaço e evitar quebra de layout */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.error-message.visible {
+    opacity: 1;
+}
+
+
+.splash-button {
+    background-color: var(--purple-medium);
+    color: var(--text-color-light);
+    border: 3px solid var(--star-color); /* Borda dourada */
+    padding: 15px 35px; /* Mais preenchimento */
+    border-radius: 50px; /* Botão em formato de pílula */
+    font-size: 1.6em; /* Um pouco maior */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Mais espaço entre ícone e texto */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Sombra suave inicial */
+}
+
+.splash-button:hover {
+    background-color: var(--purple-dark);
+    transform: translateY(-5px) scale(1.03); /* Levemente maior e mais levantado */
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6), 0 0 30px var(--purple-light); /* Sombra dourada e roxa no hover */
+    filter: brightness(1.2); /* Mais brilho no hover */
+}
+
+/* Ícones Font Awesome para um toque de "glamour" */
+.splash-button .fas,
+.section-container h2 .fas { /* Aplica a cor e brilho aos ícones do botão e títulos */
+    color: var(--star-color); /* Dourado para os ícones */
+    text-shadow: 0 0 8px var(--gold-glow); /* Brilho nos ícones */
+    font-size: 1.2em; /* Tamanho ajustado para os ícones */
+    animation: pulse 2s infinite ease-in-out; /* Animação sutil de pulso */
+}
+
+/* Ajuste específico para os ícones de lista (agora estrelas) */
+.section-container ul li::before {
+    font-family: 'Font Awesome 6 Free'; /* Usando Font Awesome 6 */
+    font-weight: 900; /* Para ícones sólidos */
+    content: '\f005'; /* Ícone de estrela sólida (fa-star) */
+    position: absolute;
+    left: 0;
+    color: var(--star-color);
+    text-shadow: 0 0 5px var(--gold-glow); /* Brilho na estrela */
+    animation: pop-in 0.5s ease-out forwards; /* Animação de entrada */
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+/* Fundo de estrelas - gerado pelo JS */
+.stars-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Esconde estrelas fora da área */
+    z-index: -1; /* Fica atrás do conteúdo */
+}
+
+.star {
+    position: absolute;
+    background-color: var(--star-color);
+    border-radius: 50%;
+    opacity: 0; /* Começam invisíveis */
+    animation: twinkle 4s infinite ease-in-out; /* Animação de cintilar */
+    box-shadow: 0 0 8px var(--gold-glow); /* Brilho em cada estrela */
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* Conteúdo principal - começa escondido */
+#mainContent {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in, visibility 1s ease-in;
+    padding-left: 140px; /* Espaço para a galeria da esquerda */
+    padding-right: 140px; /* Espaço para a galeria da direita */
+}
+
+#mainContent.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Fotos Fixas nas Laterais --- */
+.fixed-photo-gallery {
+    position: fixed;
+    top: 50%; /* Começa no meio da tela */
+    transform: translateY(-50%); /* Ajusta para centralizar verticalmente */
+    width: 120px; /* Largura das galerias laterais */
+    height: auto; /* Altura automática */
+    z-index: 100; /* Garante que fiquem acima do conteúdo principal */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaço entre as fotos */
+    pointer-events: none; /* Permite clicar no conteúdo por trás */
+    opacity: 0; /* Começa invisível */
+    transition: opacity 1s ease-in;
+}
+
+#mainContent.visible .fixed-photo-gallery {
+    opacity: 1; /* Torna visível quando o conteúdo principal aparece */
+}
+
+.fixed-photo-gallery.left {
+    left: 10px; /* Distância da borda esquerda */
+}
+
+.fixed-photo-gallery.right {
+    right: 10px; /* Distância da borda direita */
+}
+
+.fixed-photo-item {
+    background: rgba(0, 0, 0, 0.7); /* Fundo semitransparente */
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 15px rgba(178, 102, 214, 0.6), 0 0 8px rgba(255, 215, 0, 0.4);
+    border: 2px solid var(--purple-medium);
+    text-align: center;
+    pointer-events: auto; /* Permite interações com a foto e legenda */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fixed-photo-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(178, 102, 214, 0.9), 0 0 12px var(--gold-glow);
+}
+
+.fixed-photo-item img {
+    width: 100%;
+    height: 160px; /* Altura fixa para as miniaturas */
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--star-color);
+}
+
+.fixed-photo-caption {
+    font-size: 0.85em; /* Tamanho da fonte menor para legendas */
+    color: var(--text-color-light);
+    margin-top: 8px;
+    line-height: 1.3;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+
+/* Cabeçalho Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px; /* Mais preenchimento */
+    background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente para o texto, um pouco mais visível */
+    color: var(--text-color-light);
+    border-bottom: 2px solid var(--purple-light);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Sombra para destacar a seção */
+}
+
+.hero h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4em; /* Ainda maior */
+    color: var(--star-color); /* Título principal dourado */
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px var(--gold-glow), 0 0 30px rgba(0,0,0,0.7); /* Brilho mais intenso */
+}
+
+.hero p {
+    font-size: 1.3em; /* Ligeiramente maior */
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 400px; /* Limita o tamanho da imagem principal */
+    height: auto;
+    border-radius: 15px; /* Cantos arredondados */
+    border: 5px solid var(--purple-light);
+    box-shadow: 0 0 30px rgba(178, 102, 214, 0.9), 0 0 20px rgba(255, 215, 0, 0.5); /* Sombra roxa brilhante e um toque dourado */
+    object-fit: cover; /* Garante que a imagem preencha o espaço */
+    margin-top: 30px; /* Mais espaço acima */
+    filter: saturate(1.1); /* Cores um pouco mais vivas */
+    transition: transform 0.4s ease-in-out;
+}
+
+.hero-image:hover {
+    transform: scale(1.05) rotate(-2deg); /* Um toque de movimento no hover */
+}
+
+.hero-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em; /* Maior */
+    color: var(--purple-very-light);
+    margin-top: 40px; /* Mais espaço */
+    padding: 15px 30px;
+    background: rgba(123, 0, 153, 0.7); /* Fundo mais opaco para a mensagem */
+    border-radius: 15px;
+    display: inline-block; /* Ajusta o fundo ao tamanho do texto */
+    box-shadow: 0 0 20px rgba(178, 102, 214, 0.8);
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+/* Seções de Conteúdo */
+.section-container {
+    background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente mais escuro */
+    margin: 30px auto; /* Mais margem */
+    padding: 40px; /* Mais preenchimento */
+    border-radius: 20px; /* Bordas mais arredondadas */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5), 0 0 10px rgba(178, 102, 214, 0.4); /* Sombra mais intensa */
+    max-width: 950px; /* Ligeiramente mais largo */
+    border: 2px solid var(--purple-medium);
+}
+
+.section-container h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em; /* Maior */
+    color: var(--purple-light);
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--purple-glow), 1px 1px 5px rgba(0,0,0,0.6); /* Brilho roxo */
+    position: relative;
+    padding-bottom: 10px; /* Espaço para o underline animado */
+}
+
+/* Underline animado para títulos de seção */
+.section-container h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--star-color), var(--purple-light));
+    margin: 10px auto 0;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform 0.4s ease-out;
+}
+
+.section-container:hover h2::after {
+    transform: scaleX(1);
+}
+
+.section-container p,
+.section-container li {
+    font-size: 1.15em; /* Ligeiramente maior */
+    margin-bottom: 18px;
+    color: var(--text-color-light);
+    text-align: justify;
+}
+
+.section-container ul {
+    list-style: none; /* Remove bolinhas da lista */
+    padding-left: 0;
+}
+
+.section-container ul li {
+    position: relative;
+    padding-left: 30px; /* Mais espaço para o ícone */
+    margin-bottom: 12px;
+}
+
+/* Estilo para ícones dos títulos (já configurado em .splash-button .fas) */
+
+
+@keyframes pop-in {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Estilos para as seções com imagem ao lado do texto */
+.content-with-image {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas menores */
+    align-items: center; /* Alinha verticalmente */
+    gap: 30px; /* Espaçamento entre os elementos */
+    margin-bottom: 30px; /* Espaço após a seção */
+}
+
+.content-with-image.reverse {
+    flex-direction: row-reverse; /* Inverte a ordem em telas maiores */
+}
+
+.content-with-image .text-content {
+    flex: 1; /* Ocupa o espaço restante */
+    min-width: 300px; /* Largura mínima para o texto antes de quebrar */
+}
+
+.content-with-image .image-wrapper {
+    flex-shrink: 0; /* Impede que a imagem encolha */
+    width: 100%;
+    max-width: 350px; /* Largura máxima da imagem */
+    text-align: center;
+}
+
+.content-with-image .image-wrapper img {
+    width: 100%;
+    height: 680px; /* Altura fixa para as imagens */
+    object-fit: cover;
+    border-radius: 15px;
+    border: 4px solid var(--purple-light);
+    box-shadow: 0 0 20px rgba(178, 102, 214, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-with-image .image-wrapper img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(178, 102, 214, 0.9), 0 0 15px var(--gold-glow);
+}
+
+.content-with-image .image-wrapper p.image-caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4em;
+    color: var(--purple-very-light);
+    margin-top: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Spotify Embed */
+.spotify-embed {
+    width: 100%;
+    max-width: 650px; /* Ligeiramente maior */
+    margin: 30px auto;
+    border-radius: 15px; /* Bordas mais arredondadas */
+    overflow: hidden; /* Garante que o iframe fique dentro da borda */
+    box-shadow: 0 0 30px rgba(178, 102, 214, 0.8), 0 0 15px rgba(255, 215, 0, 0.4); /* Sombra mais forte */
+    border: 4px solid var(--purple-light); /* Borda mais espessa */
+}
+
+.spotify-embed iframe {
+    width: 100%;
+    height: 352px; /* Altura padrão para playlists */
+    border: none;
+}
+
+
+/* Galeria de Fotos */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Colunas adaptáveis, um pouco maiores */
+    gap: 25px; /* Mais espaço entre as fotos */
+    padding: 15px;
+}
+
+.gallery-item {
+    background-color: rgba(123, 0, 153, 0.7); /* Fundo roxo para cada item da galeria, mais opaco */
+    border-radius: 15px; /* Mais arredondado */
+    padding: 20px; /* Mais preenchimento */
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Efeito ao passar o mouse mais suave */
+    border: 2px solid var(--purple-medium);
+    position: relative; /* Para o brilho hover */
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px) scale(1.03) rotate(1deg); /* Efeito mais dinâmico */
+    box-shadow: 0 8px 25px rgba(178, 102, 214, 0.8), 0 0 15px var(--gold-glow); /* Sombra roxa forte e brilho dourado */
+}
+
+/* Brilho ao redor da imagem na galeria */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 18px; /* Correspondendo ao border-radius do item */
+    background: linear-gradient(45deg, var(--gold-glow), var(--purple-glow));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover::before {
+    opacity: 0.5; /* Aparece um brilho sutil ao redor */
+    filter: blur(10px); /* Suaviza o brilho */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px; /* Altura fixa ligeiramente maior para as imagens */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    border-radius: 10px;
+    border: 4px solid var(--purple-light); /* Borda mais espessa */
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item p {
+    font-size: 1em; /* Ligeiramente maior */
+    color: var(--text-color-light);
+    margin-bottom: 0;
+    font-weight: 300;
+}
+
+/* Seção de Vídeos */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 colunas, adaptável */
+    gap: 30px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.video-item {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(178, 102, 214, 0.8);
+    border: 2px solid var(--purple-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(178, 102, 214, 0.9), 0 0 15px var(--gold-glow);
+}
+
+.video-item iframe {
+    width: 100%;
+    height: 200px; /* Altura padrão para vídeos */
+    border: none;
+    display: block; /* Remove espaçamento indesejado */
+}
+
+.video-item p.video-caption {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05em;
+    color: var(--text-color-light);
+    padding: 15px;
+    text-align: center;
+    background: rgba(123, 0, 153, 0.6);
+    margin: 0;
+}
+
+/* Imagem final */
+.final-image {
+    display: block;
+    width: 100%;
+    max-width: 450px; /* Ligeiramente maior */
+    height: auto;
+    border-radius: 20px; /* Mais arredondado */
+    border: 6px solid var(--purple-light); /* Borda mais espessa */
+    box-shadow: 0 0 35px rgba(178, 102, 214, 0.9), 0 0 20px var(--gold-glow); /* Sombra e brilho fortes */
+    margin: 40px auto 0;
+    object-fit: cover;
+    filter: saturate(1.2); /* Cores mais vivas */
+    transition: transform 0.5s ease-in-out;
+}
+
+.final-image:hover {
+    transform: scale(1.08) rotate(3deg); /* Um toque divertido de movimento */
+}
+
+/* Assinatura */
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em; /* Maior */
+    color: var(--purple-very-light);
+    text-align: center;
+    margin-top: 50px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+.your-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em; /* Bem maior para destaque */
+    color: var(--star-color);
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px var(--gold-glow), 0 0 25px rgba(0,0,0,0.8); /* Brilho intenso */
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.5); /* Fundo mais opaco */
+    color: var(--text-color-light);
+    font-size: 1em;
+    margin-top: 60px;
+    border-top: 3px solid var(--purple-dark); /* Borda mais espessa */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); /* Sombra para o rodapé */
+}
+
+/* --- Responsividade --- */
+@media (max-width: 1200px) { /* Ajusta o padding do mainContent para telas menores */
+    #mainContent {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .fixed-photo-gallery {
+        width: 90px; /* Diminui a largura das galerias laterais */
+    }
+    .fixed-photo-item img {
+        height: 80px; /* Diminui a altura das miniaturas */
+    }
+}
+
+@media (max-width: 992px) { /* Ajusta ainda mais para tablets */
+    #mainContent {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+    .fixed-photo-gallery {
+        width: 70px; /* Diminui ainda mais */
+    }
+    .fixed-photo-item img {
+        height: 60px; /* Altura menor */
+    }
+    .fixed-photo-caption {
+        font-size: 0.75em; /* Fonte menor */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3em; /* Ajusta o tamanho do título principal */
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .hero-image {
+        max-width: 300px; /* Ajusta a imagem principal */
+    }
+
+    .hero-message {
+        font-size: 1.8em; /* Ajusta a mensagem inicial */
+    }
+
+    .section-container {
+        margin: 20px 15px;
+        padding: 30px;
+    }
+
+    .section-container h2 {
+        font-size: 2.5em; /* Ajusta títulos de seção */
+    }
+
+    .section-container p,
+    .section-container li {
+        font-size: 1.05em; /* Ajusta texto geral */
+    }
+
+    /* Responsividade para as seções com imagem ao lado do texto */
+    .content-with-image {
+        flex-direction: column; /* Em telas menores, os itens ficam um abaixo do outro */
+    }
+
+    .content-with-image.reverse {
+        flex-direction: column; /* Mantém a coluna mesmo se for reverse */
+    }
+
+    .content-with-image .image-wrapper {
+        max-width: 100%; /* Imagem ocupa toda a largura disponível */
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Uma coluna no celular */
+        gap: 20px;
+    }
+
+    .gallery-item img {
+        height: 280px; /* Mantém uma boa altura para as fotos da galeria no celular */
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr; /* Uma coluna para vídeos no celular */
+        gap: 20px;
+    }
+
+    .video-item iframe {
+        height: 180px; /* Ajusta altura do vídeo para mobile */
+    }
+
+    .signature, .your-name {
+        font-size: 2em; /* Ajusta o tamanho da assinatura */
+    }
+
+    /* Splash Screen para celular */
+    .splash-title {
+        font-size: 2.8em;
+    }
+    .splash-text {
+        font-size: 1.1em;
+    }
+    .splash-button {
+        font-size: 1.4em;
+        padding: 14px 28px;
+    }
+    .splash-button .fas {
+        font-size: 1em;
+    }
+
+    .password-field {
+        width: 85%; /* Ajusta largura do campo de senha para mobile */
+    }
+
+    /* Esconde as fotos laterais em telas pequenas */
+    .fixed-photo-gallery {
+        display: none;
+    }
+    #mainContent {
+        padding-left: 15px; /* Remove o padding extra para telas pequenas */
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.5em; /* Título ainda menor em telas muito pequenas */
+    }
+    .hero-message {
+        font-size: 1.5em;
+        padding: 10px 20px;
+    }
+    .section-container h2 {
+        font-size: 2.2em;
+    }
+    .splash-title {
+        font-size: 2.2em;
+    }
+    .splash-text {
+        font-size: 1em;
+    }
+    .splash-button {
+        font-size: 1.2em;
+        padding: 10px 20px;
+    }
+    .gallery-item img {
+        height: 200px; /* Ajusta um pouco mais para telas muito pequenas */
+    }
+    .signature, .your-name {
+        font-size: 1.8em;
+    }
+}
+/* --- Carrossel Estilo Cassete --- */
+.cassette-carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(178, 102, 214, 0.8), 0 0 15px rgba(255, 215, 0, 0.4);
+    border: 4px solid var(--purple-light);
+}
+
+.cassette-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.cassette-photo {
+    flex: 0 0 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.cassette-photo img {
+    width: 100%;
+    max-height: 900px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 4px solid var(--star-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.cassette-photo p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4em;
+    color: var(--purple-very-light);
+    margin-top: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.cassette-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--star-color);
+    border: none;
+    padding: 15px 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cassette-nav:hover {
+    background-color: var(--purple-dark);
+    color: var(--gold-glow);
+}
+
+.cassette-nav.prev {
+    left: 10px;
+}
+
+.cassette-nav.next {
+    right: 10px;
+}
